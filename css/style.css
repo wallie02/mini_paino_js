@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&display=swap');
+
+:root {
+    --first-color : #002324;
+    --second-color: #094d79;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto Mono', monospace;
+    min-height: 100vh;
+    background: linear-gradient(45deg,var(--first-color), var(--second-color))
+}
+
+h1{
+    font-size: 50px;
+    font-weight: 400px;
+    text-align: center;
+    color: white;
+}
+
+.showing{
+    display: flex;
+    justify-content: center;
+}
+
+input[type='text']{
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 40px;
+    padding: 0 2rem;
+    width: 400px;
+    font-size: 20px;
+
+}
+
+.bttn{
+    cursor: pointer;
+    margin-left: 520px;
+    margin-top: 10px;
+    font-size: 13px;
+    color: white;
+    outline: none;
+    background-color: transparent;
+    border:none;
+    text-decoration: underline rgb(30, 30, 31);
+}
+
+.demo{
+    text-align: justify;
+    list-style-type: disc;
+    margin: 20px;
+    color: white;
+}
+
+div.piano-items{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.first {
+    width: 80px;
+    height: 350px;
+    background-color: white;
+    border: 1px solid black;
+
+}
+
+.second {
+    width:40px;
+    height: 200px;
+    background-color: black;
+    border: 1px solid black;
+    margin-left: -20px;
+    margin-right: -20px;
+    z-index:2;
+}
+
+.first:active{
+    background-color: #cccccc;
+}
+
+.second:active{
+    background-color: #333030;
+}

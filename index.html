@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href='css/style.css'>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="mt-3">Piano</h1>
+
+    <div class="showing mt-3">
+        <input type="text" id="chordShow">
+    </div>
+
+    <button class="bttn" id="save">If you want to know what keys you played! Click Here</button>
+    
+    <div class="row mt-5">
+        <div class="col-3 text-center">
+            <ul class="demo me-5" id="showList">
+               
+            </ul>
+        </div>
+          
+        <div class="col-5 offset-1 piano-items">
+            <div class="first" onclick="press('C')"></div>
+            <div class="second" onclick="press('Db')"></div>
+            <div class="first" onclick="press('D')"></div>
+            <div class="second" onclick="press('E')"></div>
+            <div class="first" onclick="press('Eb')"></div>
+            <div class="first" onclick="press('F')"></div>
+            <div class="second" onclick="press('Gb')"></div>
+            <div class="first" onclick="press('G')"></div>
+            <div class="second" onclick="press('Ab')"></div>
+            <div class="first" onclick="press('A')"></div>
+            <div class="second" onclick="press('Ab')"></div>
+            <div class="first" onclick="press('B')"></div>
+        </div>
+    </div>
+</body>
+<script>
+    let playlist = [];
+
+    //play each chord
+    function press(chord){
+        const notes = new Audio(`audioFile/${chord}.mp3`);
+        notes.currentTime = 0;
+        notes.play();
+        chordShow.value += chord+ ', ' ;
+    }
+
+    // show chord on DOM & console
+    document.getElementById('save').addEventListener("click", saveChord);
+    function saveChord(){
+        let data = chordShow.value;
+        playlist.push(data);
+        if(!data){
+            console.log("You didn't played any keys");
+        }else{
+            console.log(`These ${data}were you played!`);
+        }
+        chordShow.value = "";
+        showList.innerHTML = "";
+        playlist.forEach(function(items,index) {
+            showList.innerHTML += `<li>${items}🎹</li> <br>`
+        });
+
+    }
+
+    //with Keyboard
+    document.addEventListener("keyup",function(keys){
+        //ASCII value with keycode
+        // keys.keyCode = 0;
+       switch (keys.keyCode) {
+
+        case 65: press('C');break;
+        case 83: press('D');break;
+        case 68: press('E');break;
+        case 70: press('F');break;
+        case 74: press('G');break;
+        case 75: press('A');break;
+        case 76: press('B');break;
+        case 87: press('Db');break;
+        case 69: press('Eb');break;
+        case 82: press('Gb');break;
+        case 85: press('Ab');break;
+        case 73: press('Bb');break;
+        default: console.log("You didn't play the exact keys"); break;
+       }
+    })
+
+
+     // //repaly chords that we played
+
+    // document.getElementById('play').addEventListener('click',replay);
+    // function replay(key){
+    //     let playedChord = playlist[key].split(',');
+    //     playedChord.pop();
+    //     palyBack(playedChord);
+    // }
+
+</script>
+</html>
